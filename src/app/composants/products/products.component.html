@@ -1,0 +1,74 @@
+<div class="container">
+    <h1 class="text-center text-warning mt-4 mb-4">
+        La liste de mes hommes très forts
+    </h1>  
+    <div class="row">
+        <div class="col-6">
+            <h6 class="text-info text-center">Chercher par prix</h6>
+
+            <!--********************** début form prix ********************-->
+            <form>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="prix min">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="prix max">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary">Chercher par prix</button>
+                    </div>
+                </div>
+            </form>
+            <!--********************** fin form prix ********************-->
+        </div>
+        <div class="col-6">
+            <h6 class="text-info text-center">Chercher par mot-clef</h6>
+
+            <!--********************** début form keyword ********************-->
+            <form>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="mot-clef">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary">Chercher par mot-clef</button>
+                    </div>
+                </div>
+            </form>
+            <!--********************** fin form keyword ********************-->
+
+        </div>
+    </div>
+
+    <section class="row mt-4">
+        <div class="text-center ml-4 mb-4 pl-4 pb-4 bg-success"  *ngIf="afficher">Vous venez de supprimer un produit</div>
+        <div class="col-4" *ngFor="let product of products">
+            <img src="{{product.image}}" class="img-fluid rounded-start" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <div class="row">
+                    <div class="col-4">
+                        <a href="#" class="btn btn-primary">{{product.price}}€</a>
+                    </div>
+                    <div class="col-4">
+                         <!-- le ngClass permet de faire une condition sur la class du paragraphe, par ex si product.available renvoie true la class sera text-success -->
+                        <i class="card-text fa-solid"
+                        [ngClass]="{'text-success fa-thumbs-up': product.available, 'text-danger fa-thumbs-down': !product.available}" (click)="disponible(product)">
+                        </i>
+                    </div>
+                    <div class="col-4">
+                        <button (click)="supprimer(product.id)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>   
+</div>
