@@ -45,4 +45,11 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  searchByKey(keyword : any){
+    let finalKey = keyword.value.key;
+    this.productService.productsByKeyword(finalKey).subscribe(data =>{
+      this.products = data;
+    })
+  }
+
 }

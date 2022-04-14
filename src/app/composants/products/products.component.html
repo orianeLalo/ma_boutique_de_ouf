@@ -30,11 +30,11 @@
             <h6 class="text-info text-center">Chercher par mot-clef</h6>
 
             <!--********************** début form keyword ********************-->
-            <form>
+            <form (ngSubmit)="searchByKey(keyword)" #keyword="ngForm">
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="mot-clef">
+                            <input type="text" class="form-control" placeholder="mot-clef" name="key" ngModel>
                         </div>
                     </div>
                     <div class="col-6">

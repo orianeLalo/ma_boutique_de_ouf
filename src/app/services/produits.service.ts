@@ -32,4 +32,8 @@ export class ProduitsService {
     let max = range.max;
     return this.http.get("http://localhost:3000/products?price_gte="+ min +"&price_lte="+max)
   }
+
+  productsByKeyword(finalKey: any){
+    return this.http.get("http://localhost:3000/products?q="+ finalKey)
+  }
 }
