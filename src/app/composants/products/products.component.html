@@ -7,16 +7,16 @@
             <h6 class="text-info text-center">Chercher par prix</h6>
 
             <!--********************** début form prix ********************-->
-            <form>
+            <form (ngSubmit)="range(formRange)" #formRange="ngForm">
                 <div class="row">
                     <div class="col-4">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="prix min">
+                            <input type="number" class="form-control" placeholder="prix min" name="min" ngModel>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="prix max">
+                            <input type="number" class="form-control" placeholder="prix max" name="max" ngModel>
                         </div>
                     </div>
                     <div class="col-4">

@@ -38,4 +38,11 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  range(formRange: any){
+    let range = formRange.value;
+    this.productService.productsByRange(range).subscribe(data =>{
+      this.products = data;
+    })
+  }
+
 }

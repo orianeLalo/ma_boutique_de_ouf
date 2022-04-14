@@ -26,4 +26,10 @@ export class ProduitsService {
     //available passe toujours au contraire d'elle-même soit de true à false
     return this.http.patch("http://localhost:3000/products/"+product.id, {available: !available})
   }
+
+  productsByRange(range: any){
+    let min= range.min;
+    let max = range.max;
+    return this.http.get("http://localhost:3000/products?price_gte="+ min +"&price_lte="+max)
+  }
 }
