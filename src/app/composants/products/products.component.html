@@ -1,7 +1,7 @@
 <div class="container">
     <h1 class="text-center text-warning mt-4 mb-4">
         La liste de mes hommes très forts
-    </h1>  
+    </h1>
     <div class="row">
         <div class="col-6">
             <h6 class="text-info text-center">Chercher par prix</h6>
@@ -48,7 +48,9 @@
     </div>
 
     <section class="row mt-4">
-        <div class="text-center ml-4 mb-4 pl-4 pb-4 bg-success"  *ngIf="afficher">Vous venez de supprimer un produit</div>
+        <div class="text-center ml-4 mb-4 pl-4 pb-4 bg-success" *ngIf="afficher">
+            Vous venez de supprimer un produit
+        </div>
         <div class="col-4" *ngFor="let product of products">
             <img src="{{product.image}}" class="img-fluid rounded-start" alt="...">
             <div class="card-body">
@@ -59,16 +61,63 @@
                         <a href="#" class="btn btn-primary">{{product.price}}€</a>
                     </div>
                     <div class="col-4">
-                         <!-- le ngClass permet de faire une condition sur la class du paragraphe, par ex si product.available renvoie true la class sera text-success -->
+                        <!-- le ngClass permet de faire une condition sur la class du paragraphe, par ex si product.available renvoie true la class sera text-success -->
                         <i class="card-text fa-solid"
-                        [ngClass]="{'text-success fa-thumbs-up': product.available, 'text-danger fa-thumbs-down': !product.available}" (click)="disponible(product)">
+                            [ngClass]="{'text-success fa-thumbs-up': product.available, 'text-danger fa-thumbs-down': !product.available}"
+                            (click)="disponible(product)">
                         </i>
                     </div>
                     <div class="col-4">
-                        <button (click)="supprimer(product.id)">Delete</button>
+                        <button (click)="supprimer(product.id)" class="btn btn-primary">Delete</button>
+                    </div>
+                    <div class="col-4">
+                        <button (click)="editProduct(product)" class="btn btn-primary" data-toggle="modal"
+                            data-target="#exampleModal">Edit</button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modifier produit</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                           <label>Nom de votre produit</label> 
+                                           <input type="text" class="form-control" placeholder="entrer nom" name="title" [(ngModel)]="product2.title">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description de votre produit</label> 
+                                            <input type="text" class="form-control" placeholder="entrer description" name="description" [(ngModel)]="product2.description">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Image de votre produit</label> 
+                                            <input type="text" class="form-control" placeholder="entrer lien image" name="image" [(ngModel)]="product2.image">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Prix de votre produit</label> 
+                                            <input type="number" class="form-control" placeholder="entrer prix" name="price" [(ngModel)]="product2.price">
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary" (click)="updateProduct()" data-dismiss="modal">Modifier le produit</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>   
+
+    </section>
 </div>
+

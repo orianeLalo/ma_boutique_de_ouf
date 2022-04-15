@@ -9,6 +9,14 @@ import { ProduitsService } from 'src/app/services/produits.service';
 export class ProductsComponent implements OnInit {
   products: any;
   afficher: boolean=false;
+  product2= {
+    id:"",
+    title:"",
+    description:"",
+    image:"",
+    price:0,
+    available:false
+  }
 
   constructor(private productService : ProduitsService) { }
 
@@ -49,6 +57,17 @@ export class ProductsComponent implements OnInit {
     let finalKey = keyword.value.key;
     this.productService.productsByKeyword(finalKey).subscribe(data =>{
       this.products = data;
+    })
+  }
+
+  editProduct(product:any){
+    this.product2= product;
+    console.log(this.product2);
+  }
+
+  updateProduct(){
+    this.productService.updateOneProduct(this.product2).subscribe(() =>{
+      console.log('ouaiiiis');
     })
   }
 
