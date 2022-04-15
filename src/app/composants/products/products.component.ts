@@ -18,10 +18,13 @@ export class ProductsComponent implements OnInit {
     available:false
   }
 
+  isco = this.productService.isconnected;
+
   constructor(private productService : ProduitsService) { }
 
   ngOnInit(): void {
     this.getProducts();
+    this.isco;
   }
 
   getProducts(){

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProduitsService {
+  isconnected= false;
 
   constructor(private http:HttpClient) { }
 

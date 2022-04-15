@@ -68,11 +68,12 @@
                         </i>
                     </div>
                     <div class="col-4">
-                        <button (click)="supprimer(product.id)" class="btn btn-primary">Delete</button>
+                        <button (click)="supprimer(product.id)" class="btn btn-primary" *ngIf="isco">Delete</button>
                     </div>
                     <div class="col-4">
+
                         <button (click)="editProduct(product)" class="btn btn-primary" data-toggle="modal"
-                            data-target="#exampleModal">Edit</button>
+                            data-target="#exampleModal" *ngIf="isco">Edit</button>
                     </div>
 
                     <!-- Modal -->
